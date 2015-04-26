@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424182741) do
+ActiveRecord::Schema.define(version: 20150426103854) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "hstore"
+
+  create_table "assets", force: :cascade do |t|
+    t.string   "name"
+    t.string   "serial"
+    t.string   "tag"
+    t.hstore   "specs"
+    t.integer  "staff_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "assets", ["staff_id"], name: "index_assets_on_staff_id", using: :btree
 
   create_table "staffs", force: :cascade do |t|
     t.string   "name"
@@ -30,7 +46,8 @@ ActiveRecord::Schema.define(version: 20150424182741) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "staffs", ["email"], name: "index_staffs_on_email", unique: true
-  add_index "staffs", ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
+  add_index "staffs", ["email"], name: "index_staffs_on_email", unique: true, using: :btree
+  add_index "staffs", ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "assets", "staffs"
 end

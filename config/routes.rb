@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :assets
   root 'static#index'
   devise_for :staffs
   resources :staffs
