@@ -1,18 +1,6 @@
 Rails.application.routes.draw do
-  resources :assets
-  resources :assets
-  resources :product_categories
-  resources :products
-  resources :roles
-  resources :logs
-  resources :assets
-  devise_for :staffs
-  resources :staffs
-
-  get 'staffs/:id/assets' => 'staffs#show_assets', as: :show_staff_assets
-
-  root 'static#index'
-  
+  devise_for :staffs, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
