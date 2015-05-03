@@ -1,0 +1,30 @@
+<%= simple_form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.input :name, label: "Name" %>
+  </div>
+
+  <%= f.simple_fields_for :specs do |s| %>
+      <%= s.input :screen, :input_html => { :value => "" } %>
+      <%= s.input :color, :input_html => { :value => "" } %>
+  <% end %>
+
+  <div class="field">
+     <%= f.association :product_categories, as: :check_boxes %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

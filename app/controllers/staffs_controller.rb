@@ -1,6 +1,7 @@
 class StaffsController < ApplicationController
-  before_action :set_staff, only: [:show, :edit, :update, :destroy]
+  before_action :set_staff, only: [:show, :edit, :update, :destroy, :show_assets]
   before_action :authenticate_staff!
+  load_and_authorize_resource
   
   # GET /staffs
   # GET /staffs.json
@@ -43,6 +44,7 @@ class StaffsController < ApplicationController
   def update
     respond_to do |format|
       if @staff.update(staff_params)
+        @staff.update(profile_updated:true)
         format.html { redirect_to @staff, notice: 'Staff was successfully updated.' }
         format.json { render :show, status: :ok, location: @staff }
       else
@@ -60,6 +62,9 @@ class StaffsController < ApplicationController
       format.html { redirect_to staffs_url, notice: 'Staff was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def show_assets
   end
 
   private

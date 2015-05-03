@@ -18,7 +18,7 @@ class AssetsControllerTest < ActionController::TestCase
 
   test "should create asset" do
     assert_difference('Asset.count') do
-      post :create, asset: { name: @asset.name, serial: @asset.serial, specs: @asset.specs, staff_id: @asset.staff_id, tag: @asset.tag }
+      post :create, asset: { product_id: @asset.product_id, serial: @asset.serial, staff_id: @asset.staff_id, tag: @asset.tag }
     end
 
     assert_redirected_to asset_path(assigns(:asset))
@@ -35,7 +35,7 @@ class AssetsControllerTest < ActionController::TestCase
   end
 
   test "should update asset" do
-    patch :update, id: @asset, asset: { name: @asset.name, serial: @asset.serial, specs: @asset.specs, staff_id: @asset.staff_id, tag: @asset.tag }
+    patch :update, id: @asset, asset: { product_id: @asset.product_id, serial: @asset.serial, staff_id: @asset.staff_id, tag: @asset.tag }
     assert_redirected_to asset_path(assigns(:asset))
   end
 

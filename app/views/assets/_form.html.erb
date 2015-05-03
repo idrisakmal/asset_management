@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
     <%= f.label :serial %><br>
     <%= f.text_field :serial %>
   </div>
@@ -24,12 +20,12 @@
     <%= f.text_field :tag %>
   </div>
   <div class="field">
-    <%= f.label :specs %><br>
-    <%= f.text_field :specs %>
+    <%= f.label :staff_id %><br>
+    <%= f.select :staff_id, Staff.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
   </div>
   <div class="field">
-    <%= f.label :staff_id %><br>
-    <%= f.text_field :staff_id %>
+    <%= f.label :product_id %><br>
+    <%= f.select :product_id, Product.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
   </div>
   <div class="actions">
     <%= f.submit %>
