@@ -14,10 +14,17 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Simple form
 gem 'simple_form', '~> 3.0.0'
+
+# Add bower support to rails
 gem 'bower-rails'
 
+# Ability and Role management
 gem 'cancancan', '~> 1.10'
+
+# Activeadmin
+gem 'activeadmin', github: 'activeadmin'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
