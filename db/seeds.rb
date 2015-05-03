@@ -6,9 +6,4 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-s = Staff.create(name: "Imran Ismail", hp: "0147338123", password: "password", email: "m.imran@mymagic.my")
-i = Staff.create(name: "Idris Akmal", hp: "0172012370", password: "password", email: "idris@mymagic.my")
-r = Role.create(name: "Admin", code: "admin")
-s.roles << r
-i.roles << r
-
+Staff.create(name: "Admin", hp: "0147338123", password: "password", email: "admin@mymagic.my")
